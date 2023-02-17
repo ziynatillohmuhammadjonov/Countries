@@ -3,7 +3,9 @@ const spinner = document.querySelector(".spinner");
 const modeBtn = document.querySelector(".dark-mode-btn");
 const api = "https://restcountries.com/v3.1/all";
 
-if (localStorage.getItem("mode")) {
+if (JSON.parse(localStorage.getItem("mode"))) {
+  console.log(document.body.classList.contains("dark-mode"));
+
   document.body.classList.add("dark-mode");
 }
 
@@ -47,5 +49,7 @@ function getCounter(obj) {
 }
 modeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
+
+  console.log(document.body.classList.contains("dark-mode"));
   localStorage.setItem("mode", document.body.classList.contains("dark-mode"));
 });
